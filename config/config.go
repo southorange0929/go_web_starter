@@ -28,7 +28,7 @@ var Config = &config{
 /**
 根据当前环境变量ENV读取对应的配置文件
 */
-func Init() *config {
+func Init() {
 	var conf = &config{}
 	configFilePath := filepath.Join(os.Getenv("ROOTDIR"), "./conf/", util.GetEnv()+"_conf.yaml")
 	yamlFile, err := ioutil.ReadFile(configFilePath)
@@ -39,5 +39,4 @@ func Init() *config {
 	if err != nil {
 		log.Print(err)
 	}
-	return conf
 }

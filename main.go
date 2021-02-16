@@ -1,15 +1,9 @@
 package main
 
 import (
-	"go_web_starter/config"
-	"go_web_starter/dao"
-	"log"
+	"go_web_starter/cmd"
 )
 
 func main() {
-	configs := config.Init()
-	log.Print(configs)
-	dao.Init()
-	data := dao.GetPerson()
-	log.Print(data)
+	cmd.WebServerStart()
 }
