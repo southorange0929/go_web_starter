@@ -1,4 +1,4 @@
-package dao
+package database
 
 import (
 	"database/sql"
@@ -9,9 +9,7 @@ import (
 	"strconv"
 )
 
-var Db *sql.DB
-
-func Init() {
+func MySQLStart() *sql.DB {
 	port, err := strconv.Atoi(config.Config.MySQL.Port)
 	if err != nil {
 		log.Print(err)
@@ -20,5 +18,5 @@ func Init() {
 	if err != nil {
 		log.Print(err)
 	}
-	Db = db
+	return db
 }
