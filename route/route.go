@@ -1,12 +1,10 @@
 package route
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/unrolled/secure"
 	"go_web_starter/config"
-	"go_web_starter/dao"
-	"net/http"
+	"go_web_starter/controller"
 )
 
 var Application *gin.Engine
@@ -33,10 +31,10 @@ func Init() {
 
 	Application = router
 
-	router.GET("/ping", func(context *gin.Context) {
-		user := dao.NewPersonDao().GetPerson()
-		fmt.Print(user)
+	userController := new(controller.UserController)
 
-		context.String(http.StatusOK, "pong")
-	})
+	index := router.Group("/")
+	{
+		index.GET("/ping",userController.GetUser)
+	}
 }

@@ -7,12 +7,12 @@ import (
 )
 
 type Persons struct {
-	Id        string `ddb: "Id_P"`
-	FirstName string `ddb: "FirstName"`
-	LastName  string `ddb: "LastName"`
-	City      string `ddb: "City"`
-	Columns   int    `ddb: "column"`
-	Address   string `ddb: "Address"`
+	Id        string `ddb:"Id_P"`
+	FirstName string `ddb:"FirstName"`
+	LastName  string `ddb:"LastName"`
+	City      string `ddb:"City"`
+	Columns   int    `ddb:"column"`
+	Address   string `ddb:"Address"`
 }
 
 type PersonDao struct {
