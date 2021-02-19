@@ -25,11 +25,12 @@ type mysql struct {
 type app struct {
 	Port  string `yaml:"port"`
 	Https bool   `yaml:"https"`
+	Mode string `yaml:"mode"`
 }
 
 var Config = &config{
 	MySQL:     mysql{Host: "127.0.0.1", Port: "3306", User: "root", Password: "admin", Database: "test"},
-	AppConfig: app{Port: "8080", Https: false},
+	AppConfig: app{Port: "8080", Https: false,Mode: "release"},
 }
 
 /**

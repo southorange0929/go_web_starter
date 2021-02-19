@@ -6,5 +6,6 @@ mysql:
   database: test
 
 application:
+  mode: debug
   port: 8080
   https: false

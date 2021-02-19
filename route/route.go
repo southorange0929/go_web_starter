@@ -11,6 +11,12 @@ var Application *gin.Engine
 
 func Init() {
 	router := gin.New()
+
+	if config.Config.AppConfig.Mode == "debug" {
+		gin.SetMode(gin.DebugMode)
+		router.Use(middleware.CostTime())
+	}
+
 	if config.Config.AppConfig.Https == true {
 		router.Use(middleware.TlsHandler())
 	}
