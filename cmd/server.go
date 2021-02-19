@@ -6,7 +6,7 @@ import (
 	"go_web_starter/config"
 	"go_web_starter/database"
 	"go_web_starter/route"
-	"log"
+	"go_web_starter/util"
 	"net/http"
 	"os"
 	"os/signal"
@@ -22,8 +22,8 @@ func WebServerStart() {
 	server := &http.Server{Addr: ":" + config.Config.AppConfig.Port, Handler: route.Application}
 
 	go func() {
-		log.Print("Application Start Successful...")
-		log.Print("Listen at http://127.0.0.1:" + config.Config.AppConfig.Port)
+		util.Log.Infof("Application Start Successful...")
+		util.Log.Infof("Listen at http://127.0.0.1:" + config.Config.AppConfig.Port)
 
 		var err error
 
@@ -34,20 +34,20 @@ func WebServerStart() {
 		}
 
 		if err != nil && errors.Is(err, http.ErrServerClosed) {
-			log.Print("Application Start Error:", err)
+			util.Log.Error("Application Start Error:", err)
 		}
 	}()
 
 	quit := make(chan os.Signal)
 	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)
 	<-quit
-	log.Println("Shutting down server...")
+	util.Log.Error("Shutting down server...")
 	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
 	defer cancel()
 
 	if err := server.Shutdown(ctx); err != nil {
-		log.Fatal("Server forced to shutdown:", err)
+		util.Log.Error("Server forced to shutdown:", err)
 	}
 
-	log.Println("Server exiting")
+	util.Log.Info("Server exiting")
 }

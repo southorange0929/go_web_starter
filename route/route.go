@@ -9,8 +9,6 @@ import (
 
 var Application *gin.Engine
 
-
-
 func Init() {
 	router := gin.New()
 	if config.Config.AppConfig.Https == true {
@@ -23,6 +21,6 @@ func Init() {
 
 	index := router.Group("/")
 	{
-		index.GET("/ping",userController.GetUser)
+		index.GET("/ping", userController.GetUser)
 	}
 }

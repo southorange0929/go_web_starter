@@ -6,9 +6,8 @@ import (
 )
 
 type UserController struct {
-
 }
 
-func (uc * UserController)GetUser(ctx *gin.Context)  {
-	ctx.String(http.StatusOK,"user")
+func (uc *UserController) GetUser(ctx *gin.Context) {
+	ctx.String(http.StatusOK, "user")
 }
