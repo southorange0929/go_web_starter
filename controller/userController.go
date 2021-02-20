@@ -13,5 +13,5 @@ type UserController struct {
 func (uc *UserController) GetUser(ctx *gin.Context) {
 	user := dao.NewPersonDao().GetPerson()
 	util.Log.Info(user)
-	ctx.String(http.StatusOK, "user")
+	ctx.JSON(http.StatusOK,user)
 }
