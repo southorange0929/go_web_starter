@@ -6,6 +6,9 @@ GOPROXY=https://goproxy.cn,direct
 fmt:
 	@go fmt
 
+test:
+	ROOTDIR=$(GOBASE) ENV=test go test -v ./... -cover
+
 clean:
 	@echo "clean all cache"
 	@rm -rf $(PROJECT_NAME)
