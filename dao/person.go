@@ -8,9 +8,9 @@ import (
 )
 
 type Persons struct {
-	Id         int    `ddb:"id"`
-	UserName   string `ddb:"username"`
-	Password   string `ddb:"password"`
+	Id         int       `ddb:"id"`
+	UserName   string    `ddb:"username"`
+	Password   string    `ddb:"password"`
 	CreateTime time.Time `ddb:"create_time"`
 	UpdateTime time.Time `ddb:"update_time"`
 }
