@@ -3,7 +3,7 @@ mysql:
   port: 3306
   user: root
   password: admin
-  database: test
+  database: go_web_starter
 
 application:
   mode: debug

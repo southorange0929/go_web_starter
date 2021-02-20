@@ -3,16 +3,16 @@ package dao
 import (
 	"github.com/didi/gendry/scanner"
 	"go_web_starter/database"
-	"log"
+	"go_web_starter/util"
+	"time"
 )
 
 type Persons struct {
-	Id        string `ddb:"Id_P"`
-	FirstName string `ddb:"FirstName"`
-	LastName  string `ddb:"LastName"`
-	City      string `ddb:"City"`
-	Columns   int    `ddb:"column"`
-	Address   string `ddb:"Address"`
+	Id         int    `ddb:"id"`
+	UserName   string `ddb:"username"`
+	Password   string `ddb:"password"`
+	CreateTime time.Time `ddb:"create_time"`
+	UpdateTime time.Time `ddb:"update_time"`
 }
 
 type PersonDao struct {
@@ -33,10 +33,10 @@ func NewPersonDao() *PersonDao {
 
 func (p *PersonDao) GetPerson() []Persons {
 	var data []Persons
-	rows, err := p.Db.MySQL.Query("select * from Persons")
+	rows, err := p.Db.MySQL.Query("select * from user")
 	defer rows.Close()
 	if err != nil {
-		log.Print(err)
+		util.Log.Error(err)
 	}
 	scanner.Scan(rows, &data)
 	return data

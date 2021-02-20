@@ -7,12 +7,12 @@ import (
 	"time"
 )
 
-func CostTime() gin.HandlerFunc  {
+func CostTime() gin.HandlerFunc {
 	return func(context *gin.Context) {
 		start := time.Now()
 		context.Next()
 		end := time.Since(start)
-		msg := fmt.Sprintf("Method: %s Url: %s Cost: %v StatusCode: %d",context.Request.Method,context.Request.URL,end,context.Writer.Status())
+		msg := fmt.Sprintf("Method: %s Url: %s Cost: %v StatusCode: %d", context.Request.Method, context.Request.URL, end, context.Writer.Status())
 		util.Log.Info(msg)
 	}
 }

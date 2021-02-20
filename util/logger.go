@@ -25,9 +25,9 @@ func (s *LogFormatter) Format(entry *log.Entry) ([]byte, error) {
 		line = entry.Caller.Line
 	}
 	level := strings.ToUpper(entry.Level.String())
-	content,err := json.Marshal(entry.Data)
+	content, err := json.Marshal(entry.Data)
 	if err != nil {
-		return []byte(""),err
+		return []byte(""), err
 	}
 	contentString := string(content)
 	msg := ""

@@ -4,8 +4,8 @@ import "testing"
 
 func TestConfig(t *testing.T) {
 	appData := app{
-		Mode: "debug",
-		Port: "8080",
+		Mode:  "debug",
+		Port:  "8080",
 		Https: false,
 	}
 
